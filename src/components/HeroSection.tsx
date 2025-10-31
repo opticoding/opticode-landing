@@ -13,6 +13,7 @@ export default function HeroSection() {
           alt="Hero Background" 
           fill
           className="object-cover"
+          unoptimized
         />
       </div>
 

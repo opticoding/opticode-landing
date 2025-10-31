@@ -26,6 +26,7 @@ export default function ReasonsSection() {
           alt="Neon Background" 
           fill
           className="object-cover"
+          unoptimized
         />
       </div>
 
