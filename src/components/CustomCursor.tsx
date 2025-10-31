@@ -9,6 +9,12 @@ export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     // Don't set up event listeners on touch devices
@@ -42,8 +48,9 @@ export default function CustomCursor() {
     };
   }, [isVisible, isTouch]);
 
-  // Don't render cursor on touch devices
-  if (isTouch) {
+  // Don't render until mounted (prevents hydration mismatch)
+  // or on touch devices
+  if (!isMounted || isTouch) {
     return null;
   }
 
