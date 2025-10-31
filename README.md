@@ -2,6 +2,10 @@
 
 Welcome to OptiCode. We are building the future!
 
+Figma Link:
+
+https://www.figma.com/design/WCflsfQZLvsursIsdGF1kB/OptiCode-Landing?node-id=0-1&t=zQ7yWu492aUJ11L4-1
+
 ## Tech Stack
 
 - **Next.js** - React framework
