@@ -31,8 +31,8 @@ export default function ReasonsSection() {
       </div>
 
       {/* Header */}
-      <div className="relative z-[1] flex flex-col items-center gap-4 w-full max-w-[386px] lg:max-w-none">
-        <h2 className="font-audiowide font-normal text-[30px] leading-[28px] sm:text-[40px] sm:leading-[45px] text-center bg-gradient-to-r from-[rgba(220,56,255,0.9)] to-[rgba(24,152,255,0.9)] bg-clip-text text-transparent">
+      <div className="relative z-[1] flex flex-col items-center gap-4 w-full lg:max-w-fit lg:px-8 lg:py-2 lg:rounded-2xl lg:backdrop-blur-[5px] lg:bg-[linear-gradient(90deg,rgba(40,0,49,0.5)_0%,rgba(0,23,41,0.5)_100%)]">
+        <h2 className="font-audiowide font-normal text-[30px] sm:text-[40px] leading-[36px] sm:leading-[45px] text-center bg-gradient-to-r from-[rgba(220,56,255,0.9)] to-[rgba(24,152,255,0.9)] bg-clip-text text-transparent">
           <AnimatedText>{t.reasons.header}</AnimatedText>
         </h2>
       </div>

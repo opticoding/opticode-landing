@@ -36,7 +36,7 @@ export const translations = {
       ],
     },
     reasons: {
-      header: 'Why OptiCode?',
+      header: 'Why Choose OptiCode?',
       features: [
         {
           title: 'Long Experience',
