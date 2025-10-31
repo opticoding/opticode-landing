@@ -1,9 +1,24 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import HeroContent from '@/components/HeroContent';
 import { MouseIcon } from '@/components/icons';
 import Image from 'next/image';
 
 export default function HeroSection() {
+  const [showMouseIcon, setShowMouseIcon] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setShowMouseIcon(scrollY < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background Image - Full Width */}
@@ -30,9 +45,11 @@ export default function HeroSection() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute w-full h-8 left-0 bottom-4 flex justify-center items-center">
-          <MouseIcon size={26} className="lg:w-8 lg:h-8 text-primary animate-bounce-y" />
-        </div>
+        {showMouseIcon && (
+          <div className="absolute w-full h-8 left-0 bottom-4 flex justify-center items-center">
+            <MouseIcon size={26} className="lg:w-8 lg:h-8 text-primary animate-bounce-y" />
+          </div>
+        )}
       </div>
     </section>
   );

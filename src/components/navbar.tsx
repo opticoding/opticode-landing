@@ -32,9 +32,9 @@ export default function Navbar() {
         <Image 
           src="/opticode_logo_darkmode.svg" 
           alt="OptiCode Logo" 
-          width={180}
-          height={34}
-          className="hidden xs:block lg:w-[234px] lg:h-[44px]"
+          width={234}
+          height={44}
+          className="hidden xs:block w-[160px] h-[30px] sm:w-[180px] sm:h-[34px] lg:w-[234px] lg:h-[44px]"
         />
       </div>
 
@@ -59,7 +59,7 @@ export default function Navbar() {
         {/* Language Toggle */}
         <button
           onClick={toggleLanguage}
-          className="cursor-interactive flex items-center justify-center gap-1 px-2 py-1 rounded-lg hover:bg-white/10 transition-colors duration-200"
+          className="cursor-interactive flex items-center justify-center gap-1 px-2 py-1 rounded-md sm:hover:bg-white/10 transition-colors duration-200"
           aria-label="Toggle language"
         >
           <Image 
@@ -67,21 +67,21 @@ export default function Navbar() {
             alt="English" 
             width={16}
             height={16}
-            className={`h-4 w-auto transition-opacity duration-200 ${language === 'sv' ? 'opacity-30' : 'opacity-100'}`}
+            className={`h-5 w-auto transition-opacity duration-200 ${language === 'sv' ? 'opacity-30' : 'opacity-100'}`}
           />
           <Image 
             src="/se.svg" 
             alt="Swedish" 
             width={16}
             height={16}
-            className={`h-4 w-auto transition-opacity duration-200 ${language === 'en' ? 'opacity-30' : 'opacity-100'}`}
+            className={`h-5 w-auto transition-opacity duration-200 ${language === 'en' ? 'opacity-30' : 'opacity-100'}`}
           />
         </button>
         
         <Button 
           variant="secondary"
           size="lg"
-          className="w-[106px] lg:w-[110px] h-10 lg:h-12 text-base"
+          className="w-[96px] lg:w-[110px] h-10 lg:h-12 text-base"
           onClick={() => scrollToSection(SectionId.CONTACT)}
         >
           <AnimatedText>{t.navbar.contact}</AnimatedText>
