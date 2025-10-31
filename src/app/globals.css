@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 302 100% 71%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 302 100% 71%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    cursor: none;
+  }
+
+  *:hover {
+    cursor: none;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background: black;
+    color: white;
+    font-family: var(--font-urbanist), system-ui, sans-serif;
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-audiowide), system-ui, sans-serif;
+  }
+
+  /* Ensure custom cursor is always visible */
+  button,
+  a,
+  .cursor-interactive,
+  button:hover,
+  a:hover,
+  .cursor-interactive:hover {
+    cursor: none !important;
+  }
+
+  /* Custom scrollbar */
+  html,
+  body,
+  .app {
+    scrollbar-color: unset !important;
+  }
+
+  /* Webkit browsers (Chrome, Safari, Edge) - Higher specificity */
+  @supports selector(::-webkit-scrollbar) {
+    html,
+    body,
+    .app {
+      scrollbar-color: unset !important;
+      scrollbar-width: unset !important;
+    }
+  }
+
+  html ::-webkit-scrollbar,
+  body ::-webkit-scrollbar,
+  .app ::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    background: transparent !important;
+  }
+
+  html ::-webkit-scrollbar-track,
+  body ::-webkit-scrollbar-track,
+  .app ::-webkit-scrollbar-track {
+    background: #10253c !important;
+  }
+
+  html ::-webkit-scrollbar-thumb,
+  body ::-webkit-scrollbar-thumb,
+  .app ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #785aea) !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    min-height: 20px !important;
+  }
+
+  html ::-webkit-scrollbar-thumb:hover,
+  body ::-webkit-scrollbar-thumb:hover,
+  .app ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #785aea) !important;
+  }
+
+  html ::-webkit-scrollbar-thumb:active,
+  body ::-webkit-scrollbar-thumb:active,
+  .app ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #785aea) !important;
+  }
+
+  /* Firefox-specific styles only */
+  @-moz-document url-prefix() {
+    html,
+    body,
+    .app {
+      scrollbar-width: thin !important;
+      scrollbar-color: #785aea #20202b !important;
+    }
+  }
+
+  /* Alternative Firefox targeting */
+  @supports (-moz-appearance: none) {
+    html,
+    body,
+    .app {
+      scrollbar-width: thin !important;
+      scrollbar-color: #785aea #20202b !important;
+    }
+  }
+
+  /* Custom scrollbar for scrollable containers */
+  
+  /* WebKit/Blink browsers (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 2px !important;
+    height: 8px !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #785aea !important;
+    border-radius: 0 !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #785aea !important;
+  }
+
+  /* Firefox only */
+  @supports (-moz-appearance: none) {
+    .custom-scrollbar {
+      scrollbar-width: thin !important;
+      scrollbar-color: #785aea transparent !important;
+    }
+  }
+}

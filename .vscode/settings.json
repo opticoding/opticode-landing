@@ -1,0 +1,21 @@
+{
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.suggest.autoImports": true,
+  "typescript.format.enable": true,
+  "typescript.validate.enable": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "vetur.validation.template": false,
+  "vetur.validation.script": false,
+  "vetur.validation.style": false,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.server.hybridMode": true,
+  "css.lint.unknownAtRules": "ignore",
+  "files.associations": {
+    "*.css": "css"
+  },
+  "css.validate": true,
+  "css.lint.validProperties": [],
+  "css.lint.unknownVendorSpecificProperties": "ignore"
+}
