@@ -16,7 +16,7 @@ export const translations = {
     },
     services: {
       header: 'Scope of Services',
-      subheader: 'Need something new or just rebranding? I can find a solution that fit your needs.',
+      subheader: 'Need something new or just rebranding? I will find a solution that fit your needs!',
       items: [
         {
           title: 'Websites',
@@ -55,7 +55,7 @@ export const translations = {
     cta: {
       headline: 'Ready to bring your ideas into action?',
       tagline: 'Let us discuss the next chapter together!',
-      button: 'Contact Me Today',
+      button: 'Contact Me',
     },
     contact: {
       linkedin: 'Visit Profile'
@@ -71,11 +71,11 @@ export const translations = {
       headline: 'Bygger Framtiden',
       description: 'Upptäck vår expertis i att skapa visuellt grymma webbplatser som fångar in dina kunder. Från ',
       descriptionHighlight: 'Intuitiv UX',
-      descriptionEnd: ' till sömlös funktionalitet.',
+      descriptionEnd: ' till smidig funktionalitet.',
     },
     services: {
-      header: 'Våra Tjänster',
-      subheader: 'Behöver du något nytt eller bara ändra om? Jag kan hitta en lösning som passar dina behov.',
+      header: 'Utbud av Tjänster',
+      subheader: 'Behöver du något nytt eller bara ändra om? Jag fixar en lösning som passar dina behov!',
       items: [
         {
           title: 'Webbplatser',
@@ -114,7 +114,7 @@ export const translations = {
     cta: {
       headline: 'Redo att förverkliga dina idéer?',
       tagline: 'Låt oss diskutera det tillsammans!',
-      button: 'Kontakta Mig Idag',
+      button: 'Kontakta Mig',
     },
     contact: {
       linkedin: 'Visa Profil'
