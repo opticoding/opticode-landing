@@ -11,8 +11,8 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center w-full lg:w-[404px] h-auto lg:h-[76px] justify-center lg:justify-start">
             <Image 
-              src="/opticode_logo_darkmode.svg" 
-              alt="OptiCode Logo" 
+              src="/opticode_logo_darkmode.svg"
+              alt="OptiCode Logo"
               width={322}
               height={61}
               className="w-full h-auto lg:w-[404px] lg:h-[76px]"
@@ -22,8 +22,8 @@ export default function Footer() {
           {/* Social Media Icons */}
           <div className="flex flex-row justify-center items-center gap-6 px-6 py-2 w-[136px] lg:w-[152px] h-12 lg:h-14 border border-white-border rounded-full">
           <a 
-            href="https://www.linkedin.com/in/joohansson/" 
-            target="_blank" 
+            href="https://www.linkedin.com/in/davidmattiasson/"
+            target="_blank"
             rel="noopener noreferrer"
             className="cursor-interactive hover:brightness-75 transition-all duration-200"
           >

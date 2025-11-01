@@ -129,7 +129,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
                   LinkedIn
                 </span>
                 <a
-                  href="https://www.linkedin.com/in/joohansson/"
+                  href="https://www.linkedin.com/in/davidmattiasson/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cursor-interactive flex items-center gap-2 font-urbanist font-medium text-base text-primary/80 hover:text-primary/100 transition-colors"
