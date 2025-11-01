@@ -117,10 +117,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
                 <span className="font-urbanist font-medium text-sm text-subtitle">
                   Email
                 </span>
-                <div className="flex items-center">
-                  <span>dev</span>
-                  <Image src="/pop3.png" alt="" width={100} height={18} className="w-auto h-[17px] mt-[1px]" />
-                </div>
+                <Image src="/pop4.png" alt="" width={116} height={16} unoptimized className="w-[116px] h-[16px]" />
               </div>
 
               {/* LinkedIn */}
@@ -132,7 +129,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
                   href="https://www.linkedin.com/in/davidmattiasson/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cursor-interactive flex items-center gap-2 font-urbanist font-medium text-base text-primary/80 hover:text-primary/100 transition-colors"
+                  className="cursor-interactive flex items-center gap-2 font-urbanist font-medium text-base text-primary/80 hover:text-primary/100 transition-colors leading-none"
                 >
                   <AnimatedText>{t.contact.linkedin}</AnimatedText>
                 </a>
