@@ -16,7 +16,7 @@ export const translations = {
     },
     services: {
       header: 'Scope of Services',
-      subheader: 'Need something new or just rebranding? I will find a solution that fit your needs!',
+      subheader: 'Need something new or just rebranding? I will find a solution that fits your needs!',
       items: [
         {
           title: 'Websites',
@@ -30,7 +30,7 @@ export const translations = {
         },
         {
           title: 'Web3',
-          description: 'Looking for blockchain dApps? I have the experience to develop in the crypto world as well, being infra, backend or frontend.',
+          description: 'Looking for blockchain dApps? I have experience in developing for the crypto world as well, being infra, backend or frontend.',
           highlightedWord: 'experience',
         },
       ],
@@ -40,7 +40,7 @@ export const translations = {
       features: [
         {
           title: 'Long Experience',
-          description: 'With over 20 years of coding, photography and IT skills (many years as full time web developer); I\'m well equipped to build your ideas.',
+          description: 'I have over 20 years of coding, photography and IT skills, with many years as a full-time web developer. I\'m well equipped to build your next idea.',
         },
         {
           title: 'Latest Technology',
@@ -48,7 +48,7 @@ export const translations = {
         },
         {
           title: 'Competitive',
-          description: 'By using optimized workflows I\'m able to go from idea to launch in a rapid pace, keeping the cost down while still providing cutting edge UI/UX.',
+          description: 'By using optimized workflows I\'m able to go from idea to launch in a rapid pace, keeping the cost down while still providing cutting edge intuitive UI/UX.',
         },
       ],
     },
@@ -95,11 +95,11 @@ export const translations = {
       ],
     },
     reasons: {
-      header: 'Varför OptiCode?',
+      header: 'Varför Välja OptiCode?',
       features: [
         {
           title: 'Lång Erfarenhet',
-          description: 'Med över 20 års erfarenhet av programmering, fotografering och IT (med många år som webbutvecklare); så är jag väl rustad att bygga dina idéer.',
+          description: 'Jag har över 20 års erfarenhet av programmering, fotografering och IT, med många år som webbutvecklare på heltid. Jag bygger gärna din nästa idé.',
         },
         {
           title: 'Senaste Teknologin',
