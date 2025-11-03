@@ -71,7 +71,7 @@ export default function ServicesSection() {
         <h2 className="font-audiowide text-[30px] leading-[28px] sm:text-[40px] sm:leading-[45px] lg:text-5xl lg:leading-9 text-center text-white-trans">
           <AnimatedText>{t.services.header}</AnimatedText>
         </h2>
-        <p className="font-urbanist font-medium text-base leading-6 lg:text-xl text-center text-subtitle">
+        <p className="font-urbanist font-medium text-base leading-6 lg:text-xl lg:leading-7 text-center text-subtitle">
           <AnimatedText>{t.services.subheader}</AnimatedText>
         </p>
       </div>

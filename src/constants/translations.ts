@@ -10,7 +10,7 @@ export const translations = {
     },
     hero: {
       headline: 'Building The Future',
-      description: 'Discover our expertise in crafting visually stunning websites that captivate your audience. From ',
+      description: 'Discover my expertise in crafting visually stunning websites that captivate your audience. From ',
       descriptionHighlight: 'Intuitive UX',
       descriptionEnd: ' to seamless app functionality.',
     },
@@ -54,7 +54,8 @@ export const translations = {
     },
     cta: {
       headline: 'Ready to bring your ideas into action?',
-      tagline: 'Let us discuss the next chapter together!',
+      tagline: 'Let us discuss the next chapter together. I\'m located in Kungsbacka, south of Gothenburg in Sweden. Can work on-site or remotely world wide at any time. Can be project based, hourly rate or whatever suits you best.',
+      tagline2: 'Just define your scope and I\'m sure we can find a solution. I love solving complex problems and will not disappoint you!',
       button: 'Contact Me',
     },
     contact: {
@@ -64,14 +65,14 @@ export const translations = {
   sv: {
     navbar: {
       services: 'Tjänster',
-      about: 'Om oss',
+      about: 'Om Mig',
       contact: 'Kontakt',
     },
     hero: {
       headline: 'Bygger Framtiden',
-      description: 'Upptäck vår expertis i att skapa visuellt grymma webbplatser som fångar in dina kunder. Från ',
+      description: 'Upptäck min expertis i att skapa visuellt snygga webbplatser. Från ',
       descriptionHighlight: 'Intuitiv UX',
-      descriptionEnd: ' till smidig funktionalitet.',
+      descriptionEnd: ' till komplett funktionalitet.',
     },
     services: {
       header: 'Utbud av Tjänster',
@@ -112,8 +113,9 @@ export const translations = {
       ],
     },
     cta: {
-      headline: 'Redo att förverkliga dina idéer?',
-      tagline: 'Låt oss diskutera det tillsammans!',
+      headline: 'Redo att förvandla dina idéer till verklighet?',
+      tagline: 'Låt oss diskutera det tillsammans. Jag är belägen i Kungsbacka, söder om Göteborg. Kan arbeta på plats eller på distans världen över när som helst. Kan vara projektbaserad, timpris eller vad som passar dig bäst.',
+      tagline2: 'Beskriv ditt ärende och jag är säker på att vi kan hitta en lösning. Jag älskar att lösa komplexa problem och kommer inte göra dig besviken!',
       button: 'Kontakta Mig',
     },
     contact: {
