@@ -17,7 +17,7 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: 'OptiCode - Building The Future Web Applications',
+  title: 'OptiCode - Building Future Web Applications',
   description: 'Discover our expertise in crafting visually stunning websites that captivate your audience. From intuitive UX to seamless app functionality. We build modern, responsive websites, custom applications, and Web3 solutions.',
   applicationName: 'OptiCode',
   keywords: [
