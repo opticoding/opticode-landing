@@ -1,18 +1,18 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import AnimatedText from '@/components/AnimatedText';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-interface ContactPopupProps {
+interface AboutMePopupProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
+export default function AboutMePopup({ isOpen, onClose }: AboutMePopupProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const { t } = useLanguage();
+  
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -105,45 +105,34 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
             <div className="flex flex-col items-center gap-1">
               {/* Name */}
               <h3 className="font-audiowide text-2xl lg:text-3xl text-white text-center">
-                David Mattiasson
+                {t.aboutMe.title}
               </h3>
               <p className="font-urbanist font-normal text-base text-center text-subtitle">
-                OptiCode AB
+                {t.aboutMe.subtitle}
               </p>
             </div>
 
             {/* Divider */}
             <div className="w-16 h-px bg-white-border" />
 
-            {/* Contact Info */}
+            {/* About Info */}
             <div className="flex flex-col gap-4 w-full items-center">
-              {/* Email */}
-              <div className="flex flex-col gap-1 items-center">
-                <Image src="/pop4.png" alt="" width={116} height={16} unoptimized className="w-[116px] h-[16px]" />
-              </div>
-
-              {/* LinkedIn */}
-              <div className="flex flex-col gap-1 items-center">
-                <a
-                  href="https://www.linkedin.com/in/davidmattiasson/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cursor-interactive flex items-center justify-center gap-2 font-urbanist font-medium text-base text-primary/80 hover:text-primary/100 transition-colors leading-none"
-                >
-                  <AnimatedText>LinkedIn Profile</AnimatedText>
-                </a>
-              </div>
-
-              {/* ORG Name */}
-              <div className="flex flex-col gap-1 items-center">
-                <a
-                  href="https://www.allabolag.se/foretag/opticode-ab/frilles%C3%A5s/internet-konsulter-operat%C3%B6rer/2KJBEYKI5YFHL"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cursor-interactive flex items-center justify-center gap-2 font-urbanist font-medium text-base text-primary/80 hover:text-primary/100 transition-colors leading-none"
-                >
-                  Company Info
-                </a>
+              <div className="flex flex-col gap-2 items-center text-center">
+                <p className="font-urbanist font-normal text-sm text-subtitle leading-relaxed">
+                  <AnimatedText>
+                    {t.aboutMe.bio1}
+                  </AnimatedText>
+                </p>
+                <p className="font-urbanist font-normal text-sm text-subtitle leading-relaxed mt-2">
+                  <AnimatedText>
+                    {t.aboutMe.bio2}
+                  </AnimatedText>
+                </p>
+                <p className="font-urbanist font-normal text-sm text-subtitle leading-relaxed mt-2">
+                  <AnimatedText>
+                    {t.aboutMe.bio3}
+                  </AnimatedText>
+                </p>
               </div>
             </div>
           </div>
@@ -152,3 +141,4 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
     </div>
   );
 }
+

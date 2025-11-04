@@ -56,11 +56,16 @@ export const translations = {
       headline: 'Ready to bring your ideas into action?',
       tagline: 'Let us discuss the next chapter together. I\'m located in Kungsbacka, south of Gothenburg in Sweden. Can work on-site or remotely world wide at any time. Can be project based, hourly rate or whatever suits you best.',
       tagline2: 'Just define your scope and I\'m sure we can find a solution. I love solving complex problems and will not disappoint you!',
-      button: 'Contact Me',
+      button1: 'Contact',
+      button2: 'About Me',
     },
-    contact: {
-      linkedin: 'Visit Profile'
-    }
+    aboutMe: {
+      title: 'David Mattiasson',
+      subtitle: 'Full-Stack Developer & Company Owner',
+      bio1: 'I was born in 1984 in Sweden and have a bachelor\'s and Master\'s degree in Systems, Control and Mechatronics from Chalmers University of Technology.',
+      bio2: 'I have worked 13 years as IT administrator and in various application manager roles. I\'ve been coding as a hobby my whole life and spent full time as a web developer in Web3 since 2021.',
+      bio3: 'Built very advanced frontend applications, tools, scripts, Figma designs and more. I\'m mastering JS stacks (React, Next, Node, Vue), CSS, HTML, TypeScript, Tailwind, Python, Google Cloud Services, Terraform and much more.',
+    },
   },
   sv: {
     navbar: {
@@ -116,11 +121,16 @@ export const translations = {
       headline: 'Redo att förvandla dina idéer till verklighet?',
       tagline: 'Låt oss diskutera det tillsammans. Jag är belägen i Kungsbacka, söder om Göteborg. Kan arbeta på plats eller på distans världen över när som helst. Kan vara projektbaserad, timpris eller vad som passar dig bäst.',
       tagline2: 'Beskriv ditt ärende och jag är säker på att vi kan hitta en lösning. Jag älskar att lösa komplexa problem och kommer inte göra dig besviken!',
-      button: 'Kontakta Mig',
+      button1: 'Kontakt',
+      button2: 'Om Mig',
     },
-    contact: {
-      linkedin: 'Visa Profil'
-    }
+    aboutMe: {
+      title: 'David Mattiasson',
+      subtitle: 'Full-Stack Utvecklare & Företagare',
+      bio1: 'Jag är född 1984 i Sverige och har kandidat- och masterexamen i Reglerteknik och Mekatronik från Chalmers Tekniska Högskola.',
+      bio2: 'Jag har jobbat 13 år som IT-administratör och i olika roller som applikationsansvarig. Kodat som hobby hela livet och arbetat heltid som webbutvecklare inom Web3 sedan 2021.',
+      bio3: 'Byggt mycket avancerade frontend-applikationer, verktyg, skripts, Figma-designer med mera. Jag behärskar JS-stackar (React, Next, Node, Vue), CSS, HTML, TypeScript, Tailwind, Python, Google Cloud Services, Terraform och mycket mer.',
+    },
   },
 } as const;
 
