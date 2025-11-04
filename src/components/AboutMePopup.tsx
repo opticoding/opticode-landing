@@ -59,12 +59,12 @@ export default function AboutMePopup({ isOpen, onClose }: AboutMePopupProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
       onClick={onClose}
     >
       {/* Backdrop */}
       <div
-        className={`absolute inset-0 bg-black/80 transition-opacity duration-500 ${
+        className={`fixed inset-0 bg-black/80 transition-opacity duration-500 ${
           isAnimating ? 'opacity-100' : 'opacity-0'
         }`}
         aria-hidden="true"
@@ -72,13 +72,13 @@ export default function AboutMePopup({ isOpen, onClose }: AboutMePopupProps) {
       
       {/* Popup */}
       <div
-        className={`relative w-full max-w-md rounded-2xl bg-gradient-to-br from-[#42114d] to-[#072e4d] p-[1px] shadow-2xl transform transition-all duration-500 ${
+        className={`relative w-full max-w-md my-auto rounded-2xl bg-gradient-to-br from-[#42114d] to-[#072e4d] p-[1px] shadow-2xl transform transition-all duration-500 ${
           isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Inner content with background */}
-        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#2B0B32] to-[#020202] p-8">
+        <div className="relative w-full rounded-2xl bg-gradient-to-br from-[#2B0B32] to-[#020202] p-8">
           {/* Close button */}
           <button
             onClick={onClose}

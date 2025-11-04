@@ -62,7 +62,7 @@ export const translations = {
     aboutMe: {
       title: 'David Mattiasson',
       subtitle: 'Full-Stack Developer & Company Owner',
-      bio1: 'I was born in 1984 in Sweden and have a bachelor\'s and Master\'s degree in Systems, Control and Mechatronics from Chalmers University of Technology.',
+      bio1: 'I was born in 1984 in Sweden and have a Bachelor\'s and Master\'s degree in Systems, Control and Mechatronics from Chalmers University of Technology.',
       bio2: 'I have worked 13 years as IT administrator and in various application manager roles. I\'ve been coding as a hobby my whole life and spent full time as a web developer in Web3 since 2021.',
       bio3: 'Built very advanced frontend applications, tools, scripts, Figma designs and more. I\'m mastering JS stacks (React, Next, Node, Vue), CSS, HTML, TypeScript, Tailwind, Python, Google Cloud Services, Terraform and much more.',
     },
