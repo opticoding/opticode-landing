@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     'website design',
     'web design',
     'responsive design',
+    'opticode ab',
     'UI/UX',
     'custom websites',
     'custom apps',
