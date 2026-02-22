@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Audiowide, Urbanist } from 'next/font/google';
-import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import './globals.css';
 
 const audiowide = Audiowide({
   weight: '400',
@@ -17,67 +17,73 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: 'OptiCode AB - Full-Stack Web Development & Digital Solutions',
-  description: 'Professional web development services. 13 years of IT experience building advanced web applications and custom business solutions. Based in Sweden, available worldwide.',
+  metadataBase: new URL('https://opticode.se'),
+  title: 'OptiCode AB | Web Application Developer in Sweden',
+  description: 'I build web applications and custom tools for businesses. One developer, direct access, no agency overhead. Based in Kungsbacka, Sweden.',
   applicationName: 'OptiCode AB',
   keywords: [
-    // Core Services (High Intent)
+    // Core — high intent, specific
     'web developer sweden',
-    'web development kungsbacka',
+    'webbutvecklare kungsbacka',
     'webbutvecklare göteborg',
     'full stack developer sweden',
-    'custom web applications',
-    'business web solutions',
-    
-    // Service Types
-    'web development',
+    'david mattiasson',
+    'opticode',
+    'opticode ab',
+
+    // Services
     'web application development',
+    'custom web applications',
     'custom software development',
-    'responsive web design',
-    'e-commerce development',
-    'business portals',
     'dashboard development',
-    
-    // Tech Stack (For Technical Clients)
-    'react developer',
-    'next.js development',
+    'business portals',
+    'internal tools development',
+    'webbapplikation',
+    'webb konsult',
+
+    // Tech stack (for technical clients)
+    'react developer sweden',
+    'next.js developer',
     'typescript developer',
-    'tailwind',
-    'css',
     'node.js development',
     'python developer',
-    
+
     // Specialized
     'web3 development',
     'blockchain applications',
-    'dApps development',
-    
-    // Location-Based
+
+    // Location
     'kungsbacka',
     'göteborg',
-    'västra götaland',
+    'halland',
     'sweden',
     'sverige',
-    
-    // Business Terms
+
+    // Engagement model
     'freelance web developer',
     'contract web developer',
     'remote web development',
-    'opticode ab',
   ],
-  authors: [{ name: 'David Mattiasson' }],
-  creator: 'David Mattiasson - OptiCode AB',
+  authors: [{ name: 'David Mattiasson', url: 'https://opticode.se' }],
+  creator: 'David Mattiasson',
   publisher: 'OptiCode AB',
+  alternates: {
+    canonical: 'https://opticode.se',
+    languages: {
+      'en': 'https://opticode.se',
+      'sv': 'https://opticode.se',
+    },
+  },
   twitter: {
     card: 'summary_large_image',
-    title: 'OptiCode AB - Professional Web Development Services',
-    description: 'Building advanced web applications and digital solutions worldwide.',
-    images: 'https://opticode.se/og.png',
+    title: 'OptiCode AB | Web Application Developer in Sweden',
+    description: 'David Mattiasson builds web applications and custom tools for businesses. One developer, direct access, no agency overhead.',
+    images: '/og.png',
   },
   openGraph: {
-    title: 'OptiCode AB - Full-Stack Web Development in Sweden',
-    description: 'Professional web development services. 13 years of IT experience building advanced web applications and custom business solutions. Based in Sweden, available worldwide.',
-    images: 'https://opticode.se/og.png',
+    title: 'OptiCode AB | Web Application Developer in Sweden',
+    description: 'David Mattiasson builds web applications and custom tools for businesses. One developer, direct access, no agency overhead. Based in Kungsbacka, Sweden.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'OptiCode AB — Web Application Developer' }],
     url: 'https://opticode.se',
     siteName: 'OptiCode AB',
     locale: 'en_US',
@@ -111,6 +117,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'geo.region': 'SE-N',
+    'geo.placename': 'Kungsbacka, Sweden',
+    'geo.position': '57.4897;12.0765',
+    'ICBM': '57.4897, 12.0765',
+  },
 };
 
 export const viewport: Viewport = {
@@ -121,6 +133,75 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://opticode.se/#person',
+      name: 'David Mattiasson',
+      jobTitle: 'Full-Stack Web Developer',
+      url: 'https://opticode.se',
+      sameAs: [
+        'https://www.linkedin.com/in/davidmattiasson/',
+        'https://github.com/opticoding',
+      ],
+      worksFor: { '@id': 'https://opticode.se/#business' },
+      alumniOf: {
+        '@type': 'EducationalOrganization',
+        name: 'Chalmers University of Technology',
+        url: 'https://www.chalmers.se',
+      },
+      knowsAbout: [
+        'Web Application Development',
+        'Full-Stack Development',
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Node.js',
+        'Python',
+        'Google Cloud',
+        'Terraform',
+        'Web3',
+        'UI/UX Design',
+      ],
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://opticode.se/#business',
+      name: 'OptiCode AB',
+      url: 'https://opticode.se',
+      description: 'Full-stack web application development for businesses. Custom dashboards, internal tools, business portals and product launches. One developer, direct access.',
+      founder: { '@id': 'https://opticode.se/#person' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Kungsbacka',
+        addressRegion: 'Halland',
+        addressCountry: 'SE',
+        postalCode: '43430',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 57.4897,
+        longitude: 12.0765,
+      },
+      areaServed: 'Worldwide',
+      serviceType: [
+        'Web Application Development',
+        'Custom Software Development',
+        'Full-Stack Development',
+        'Dashboard Development',
+        'Business Portal Development',
+        'Web3 Development',
+      ],
+      sameAs: [
+        'https://www.linkedin.com/in/davidmattiasson/',
+        'https://github.com/opticoding',
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -129,6 +210,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${audiowide.variable} ${urbanist.variable}`} suppressHydrationWarning={true}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <LanguageProvider>
           <CustomCursor />
           {children}

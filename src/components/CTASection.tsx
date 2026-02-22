@@ -55,7 +55,7 @@ export default function CTASection() {
             style={{
               opacity: isButton2Visible ? 1 : 0,
               transform: isButton2Visible ? 'translateY(0)' : 'translateY(50px)',
-              transition: 'opacity 800ms ease-in-out, transform 700ms ease-out',
+              transition: 'opacity 800ms ease-in-out, transform 700ms ease-out, background-color 150ms ease, border-color 150ms ease, color 150ms ease',
             }}
             onClick={() => setIsAboutMeOpen(true)}
           >
@@ -69,7 +69,7 @@ export default function CTASection() {
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-              transition: 'opacity 800ms ease-in-out, transform 700ms ease-out',
+              transition: 'opacity 800ms ease-in-out, transform 700ms ease-out, background-color 150ms ease, border-color 150ms ease, color 150ms ease',
             }}
             onClick={() => setIsPopupOpen(true)}
           >

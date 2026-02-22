@@ -1,6 +1,9 @@
 {
-  "name": "OptiCode",
+  "name": "OptiCode AB",
   "short_name": "OptiCode",
+  "description": "Web application developer in Sweden. Complex web apps and custom tools for businesses.",
+  "start_url": "/",
+  "lang": "en",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
