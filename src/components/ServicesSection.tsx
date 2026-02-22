@@ -108,7 +108,7 @@ export default function ServicesSection() {
             <div
               key={index}
               ref={cardRef.elementRef}
-              className="flex flex-col items-center p-4 lg:p-8 gap-4 rounded-2xl w-full lg:flex-1"
+              className="group relative flex flex-col items-center p-4 lg:p-8 gap-4 rounded-2xl w-full lg:flex-1"
               style={{
                 border: `1px solid ${service.borderColor}`,
                 opacity: cardVisible ? 1 : 0,
@@ -120,21 +120,20 @@ export default function ServicesSection() {
                     : 'opacity 1000ms ease-in-out, transform 700ms ease-out',
               }}
             >
+              {/* Hover glow overlay */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: `radial-gradient(ellipse at 50% 0%, ${service.iconBg} 0%, transparent 70%)`,
+                  boxShadow: `inset 0 1px 0 ${service.borderColor}`,
+                }}
+              />
               {/* Icon */}
               <div className="flex flex-col items-center gap-4 w-full">
-                <div className="relative w-12 h-12">
-                  <div 
-                    className="absolute inset-0 rounded-full"
-                    style={{
-                      background: service.iconBg,
-                      left: 'calc(50% - 23px)',
-                      top: 'calc(50% - 23px)',
-                    }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <IconComponent size={28} style={{ color: service.iconColor }} />
-                  </div>
-                </div>
+                <div className="relative flex items-center justify-center w-14 h-14 rounded-2xl"
+                  style={{ background: service.iconBg }}
+                >
+                  <IconComponent size={28} style={{ color: service.iconColor }} /></div>
 
                 {/* Title */}
                 <h3 

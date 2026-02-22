@@ -49,7 +49,7 @@ export default function CTASection() {
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
           <Button 
             ref={button2Ref}
-            variant="secondary"
+            variant="outline"
             size="lg"
             className="rounded-xl h-[44px] lg:h-[50px] px-6 w-[170px] lg:w-auto"
             style={{
@@ -63,7 +63,7 @@ export default function CTASection() {
           </Button>
           <Button 
             ref={buttonRef}
-            variant="secondary"
+            variant="default"
             size="lg"
             className="rounded-xl h-[44px] lg:h-[50px] px-6 w-[170px] lg:w-auto"
             style={{

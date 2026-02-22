@@ -6,6 +6,13 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { SectionId } from '@/constants/constants';
 import Image from 'next/image';
+import { ClockIcon, ZapIcon, TargetIcon } from '@/components/icons';
+
+const featureIcons = [
+  { Icon: ClockIcon, color: '#DC38FF', bg: 'rgba(220, 56, 255, 0.15)' },
+  { Icon: ZapIcon, color: '#1898FF', bg: 'rgba(24, 152, 255, 0.15)' },
+  { Icon: TargetIcon, color: '#47adff', bg: 'rgba(71, 173, 255, 0.15)' },
+];
 
 export default function ReasonsSection() {
   const { t } = useLanguage();
@@ -52,22 +59,33 @@ export default function ReasonsSection() {
             : 'opacity 1000ms ease-in-out, transform 700ms ease-out', // Desktop: fade + transform
         }}
       >
-        {t.reasons.features.map((feature, index) => (
-          <div
-            key={index}
-            className="flex flex-col justify-center items-center gap-[10px] w-full lg:w-[310px]"
-          >
-            {/* Title */}
-            <h3 className="font-urbanist font-bold text-2xl leading-7 text-center text-white-trans">
-              <AnimatedText>{feature.title}</AnimatedText>
-            </h3>
+        {t.reasons.features.map((feature, index) => {
+          const { Icon, color, bg } = featureIcons[index];
+          return (
+            <div
+              key={index}
+              className="flex flex-col justify-center items-center gap-4 w-full lg:w-[310px]"
+            >
+              {/* Icon */}
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-2xl flex-shrink-0"
+                style={{ background: bg }}
+              >
+                <Icon size={28} style={{ color }} />
+              </div>
 
-            {/* Description */}
-            <p className="font-urbanist font-medium text-base leading-6 text-center text-subtitle w-full">
-              <AnimatedText>{feature.description}</AnimatedText>
-            </p>
-          </div>
-        ))}
+              {/* Title */}
+              <h3 className="font-urbanist font-bold text-2xl leading-7 text-center text-white-trans">
+                <AnimatedText>{feature.title}</AnimatedText>
+              </h3>
+
+              {/* Description */}
+              <p className="font-urbanist font-medium text-base leading-6 text-center text-subtitle w-full">
+                <AnimatedText>{feature.description}</AnimatedText>
+              </p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
