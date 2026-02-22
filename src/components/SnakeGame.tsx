@@ -134,29 +134,31 @@ export default function SnakeGame() {
       state.eatFlash--;
     }
 
-    // Food — pulsing radial glow orb
-    const food = state.food;
-    const pulse = Math.sin(state.frame * 0.07) * 0.5 + 0.5;
-    const fx = food.x * CELL + CELL / 2;
-    const fy = food.y * CELL + CELL / 2;
-    const foodR = 3.5 + pulse * 2;
+    // Food — pulsing radial glow orb (only when game has started or ended)
+    if (state.state !== 'idle') {
+      const food = state.food;
+      const pulse = Math.sin(state.frame * 0.07) * 0.5 + 0.5;
+      const fx = food.x * CELL + CELL / 2;
+      const fy = food.y * CELL + CELL / 2;
+      const foodR = 3.5 + pulse * 2;
 
-    const grad = ctx.createRadialGradient(fx, fy, 0, fx, fy, CELL * 0.9);
-    grad.addColorStop(0, `rgba(217, 70, 239, ${0.28 + pulse * 0.15})`);
-    grad.addColorStop(0.5, `rgba(168, 85, 247, ${0.09 + pulse * 0.06})`);
-    grad.addColorStop(1, 'rgba(168, 85, 247, 0)');
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(fx, fy, CELL * 0.9, 0, Math.PI * 2);
-    ctx.fill();
+      const grad = ctx.createRadialGradient(fx, fy, 0, fx, fy, CELL * 0.9);
+      grad.addColorStop(0, `rgba(217, 70, 239, ${0.28 + pulse * 0.15})`);
+      grad.addColorStop(0.5, `rgba(168, 85, 247, ${0.09 + pulse * 0.06})`);
+      grad.addColorStop(1, 'rgba(168, 85, 247, 0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(fx, fy, CELL * 0.9, 0, Math.PI * 2);
+      ctx.fill();
 
-    ctx.shadowBlur = 7;
-    ctx.shadowColor = '#d946ef';
-    ctx.fillStyle = '#e879f9';
-    ctx.beginPath();
-    ctx.arc(fx, fy, foodR, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
+      ctx.shadowBlur = 7;
+      ctx.shadowColor = '#d946ef';
+      ctx.fillStyle = '#e879f9';
+      ctx.beginPath();
+      ctx.arc(fx, fy, foodR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
 
     // Snake — render tail → head so head glow sits on top
     const snake = state.snake;
