@@ -47,7 +47,7 @@ export default function ReasonsSection() {
       {/* Content Container */}
       <div 
         ref={contentRef}
-        className="relative z-[1] flex flex-col lg:flex-row justify-center items-center p-8 lg:p-12 gap-12 lg:gap-[100px] w-full max-w-[386px] lg:max-w-[1280px] rounded-2xl backdrop-blur-[15px]" 
+        className="relative z-[1] flex flex-col lg:flex-row justify-center items-start p-8 lg:p-12 gap-12 lg:gap-[100px] w-full max-w-[386px] lg:max-w-[1280px] rounded-2xl backdrop-blur-[15px]" 
         style={{
           background: 'linear-gradient(90deg, rgba(40, 0, 49, 0.5) 0%, rgba(0, 23, 41, 0.5) 100%)',
           opacity: isVisible ? 1 : 0,

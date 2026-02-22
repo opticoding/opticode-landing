@@ -34,7 +34,7 @@ export default function CTASection() {
       <div className="flex flex-col items-center gap-8 lg:gap-12 w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[688px]">
         {/* Headline */}
         <div className="flex flex-col items-center gap-4 lg:gap-3">
-          <h2 className="font-audiowide text-[30px] leading-[28px] sm:text-[40px] sm:leading-[45px] lg:text-5xl lg:leading-12 text-center text-white">
+          <h2 className="font-audiowide text-[30px] leading-[32px] sm:text-[40px] sm:leading-[45px] lg:text-5xl lg:leading-12 text-center text-white">
             <AnimatedText>{t.cta.headline}</AnimatedText>
           </h2>
           <p className="font-urbanist font-medium text-base leading-6 lg:text-xl lg:leading-8 text-center text-subtitle">

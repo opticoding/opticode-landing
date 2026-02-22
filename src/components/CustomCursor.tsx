@@ -4,16 +4,32 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useIsTouch } from '@/hooks/useIsTouch';
 
+const GAME_PLAYING_EVENT = 'cursor-game-playing';
+
+export function dispatchCursorGamePlaying(isPlaying: boolean) {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(GAME_PLAYING_EVENT, { detail: { isPlaying } }));
+  }
+}
+
 export default function CustomCursor() {
   const isTouch = useIsTouch();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [hideForGame, setHideForGame] = useState(false);
 
   // Prevent hydration mismatch by only rendering after mount
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  // Hide cursor when a game (e.g. Snake) is running
+  useEffect(() => {
+    const handler = (e: Event) => setHideForGame((e as CustomEvent<{ isPlaying: boolean }>).detail.isPlaying);
+    window.addEventListener(GAME_PLAYING_EVENT, handler);
+    return () => window.removeEventListener(GAME_PLAYING_EVENT, handler);
   }, []);
 
   useEffect(() => {
@@ -67,7 +83,7 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: 1,
-          opacity: isVisible ? 0.3 : 0,
+          opacity: hideForGame ? 0 : isVisible ? 0.3 : 0,
         }}
         transition={{
           type: 'spring',
@@ -97,7 +113,7 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isHovering ? 0.5 : 0.8,
-          opacity: isVisible ? 1 : 0,
+          opacity: hideForGame ? 0 : isVisible ? 1 : 0,
         }}
         transition={{
           type: 'spring',
