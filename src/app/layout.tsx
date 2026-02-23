@@ -82,7 +82,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'OptiCode AB | Web Application Developer in Sweden',
-    description: 'David Mattiasson builds web applications and custom tools for businesses. One developer, direct access, no agency overhead. Based in Kungsbacka, Sweden.',
+    description: 'I build web applications and custom tools for businesses. One developer, direct access, no agency overhead. Based in Kungsbacka, Sweden.',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'OptiCode AB — Web Application Developer' }],
     url: 'https://opticode.se',
     siteName: 'OptiCode AB',
