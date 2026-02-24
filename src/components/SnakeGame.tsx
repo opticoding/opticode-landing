@@ -6,21 +6,30 @@ import { Button } from '@/components/ui/button';
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
-const GRID = 15;
-const CELL = 20;
-const SIZE = GRID * CELL; // 300px
+const GRID_CONFIG = {
+  S: { GRID: 16, CELL: 20 },
+  L: { GRID: 32, CELL: 20 },
+} as const;
+const MIN_WIDTH_FOR_LARGE = 720; // show S|L toggle when viewport fits 32x32 @ 20px (640px canvas)
+const SNAKE_START = { x: 2, y: 6 };
+const FOOD_START = { x: 5, y: 5 };
 
 const BASE_SPEED = 300;
-const MIN_SPEED = 60;
-const SPEED_CONVERGE_SCORE = 40; // score at which speed approaches MIN_SPEED
-const LS_KEY = 'opticode-snake-best';
+const MIN_SPEED = 100;
+const SPEED_CONVERGE_SCORE = 30; // score at which speed approaches MIN_SPEED
+const LS_KEY_S = 'opticode-snake-best-S';
+const LS_KEY_L = 'opticode-snake-best-L';
+
+function getLsKey(gridSize: 'S' | 'L'): string {
+  return gridSize === 'S' ? LS_KEY_S : LS_KEY_L;
+}
 
 type Dir = 'U' | 'D' | 'L' | 'R';
 type Pt = { x: number; y: number };
-type GameState = 'idle' | 'playing' | 'over';
+type GameState = 'idle' | 'playing' | 'over' | 'won';
 
 const OPP: Record<Dir, Dir> = { U: 'D', D: 'U', L: 'R', R: 'L' };
-const QUEUE_MAX = 4;
+const QUEUE_MAX = 3;
 
 // Snake gradient: bright pink head → deep violet tail
 const HEAD_RGB: [number, number, number] = [244, 114, 182];  // pink-400
@@ -36,10 +45,10 @@ function speedFromScore(score: number): number {
   return Math.max(MIN_SPEED, Math.round(MIN_SPEED + (BASE_SPEED - MIN_SPEED) * decay));
 }
 
-function randomFood(snake: Pt[]): Pt {
+function randomFood(snake: Pt[], grid: number): Pt {
   let f: Pt;
   do {
-    f = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+    f = { x: Math.floor(Math.random() * grid), y: Math.floor(Math.random() * grid) };
   } while (snake.some(s => s.x === f.x && s.y === f.y));
   return f;
 }
@@ -71,11 +80,28 @@ export default function SnakeGame() {
   const [sessionBest, setSessionBest] = useState(0);
   const [pb, setPb] = useState(0);
   const [isTouch, setIsTouch] = useState(false);
+  const [gridSize, setGridSize] = useState<'S' | 'L'>('S');
+  const [showGridToggle, setShowGridToggle] = useState(false);
+
+  const { GRID, CELL } = GRID_CONFIG[gridSize];
+  const SIZE = GRID * CELL;
+  const MAX_SCORE = GRID * GRID - 1;
+  const speedMult = gridSize === 'L' ? 0.5 : 1; // L mode: double speed (half tick interval)
 
   useEffect(() => {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved) setPb(parseInt(saved, 10));
     setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(getLsKey(gridSize));
+    setPb(saved ? parseInt(saved, 10) : 0);
+  }, [gridSize]);
+
+  useEffect(() => {
+    const check = () => setShowGridToggle(window.innerWidth >= MIN_WIDTH_FOR_LARGE);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   // ── Canvas setup (DPR-aware for sharp retina rendering) ────────────────
@@ -83,6 +109,24 @@ export default function SnakeGame() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    cancelAnimationFrame(rafRef.current);
+    dispatchCursorGamePlaying(false);
+    dirQueue.current = [];
+    // Reset game state when grid changes
+    g.current = {
+      state: 'idle',
+      snake: [SNAKE_START],
+      dir: 'R',
+      food: FOOD_START,
+      score: 0,
+      speed: BASE_SPEED,
+      lastTick: 0,
+      frame: 0,
+      eatFlash: 0,
+    };
+    setScore(0);
+    setUiState('idle');
+
     const dpr = window.devicePixelRatio || 1;
     dprRef.current = dpr;
     canvas.width = SIZE * dpr;
@@ -95,7 +139,7 @@ export default function SnakeGame() {
     draw();
     return () => cancelAnimationFrame(rafRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [gridSize, SIZE]);
 
   // ── Draw ─────────────────────────────────────────────────────────────────
 
@@ -220,9 +264,9 @@ export default function SnakeGame() {
 
   // ── Game lifecycle ────────────────────────────────────────────────────────
 
-  const endGame = () => {
+  const endGame = (won = false) => {
     const state = g.current;
-    state.state = 'over';
+    state.state = won ? 'won' : 'over';
     dispatchCursorGamePlaying(false);
     cancelAnimationFrame(rafRef.current);
 
@@ -230,10 +274,10 @@ export default function SnakeGame() {
     setSessionBest(prev => Math.max(prev, finalScore));
     setPb(prev => {
       const newPb = Math.max(prev, finalScore);
-      localStorage.setItem(LS_KEY, String(newPb));
+      localStorage.setItem(getLsKey(gridSize), String(newPb));
       return newPb;
     });
-    setUiState('over');
+    setUiState(won ? 'won' : 'over');
     draw();
   };
 
@@ -268,8 +312,12 @@ export default function SnakeGame() {
         state.eatFlash = 10;
         setScore(state.score);
         setSessionBest(prev => Math.max(prev, state.score));
-        state.food = randomFood(state.snake);
-        state.speed = speedFromScore(state.score);
+        if (state.score >= MAX_SCORE) {
+          endGame(true);
+          return;
+        }
+        state.food = randomFood(state.snake, GRID);
+        state.speed = speedFromScore(state.score) * speedMult;
       } else {
         state.snake.pop();
       }
@@ -283,12 +331,12 @@ export default function SnakeGame() {
     cancelAnimationFrame(rafRef.current);
     const state = g.current;
     state.state = 'playing';
-    state.snake = [{ x: 7, y: 7 }];
+    state.snake = [SNAKE_START];
     state.dir = 'R';
     dirQueue.current = [];
-    state.food = randomFood([{ x: 7, y: 7 }]);
+    state.food = randomFood(state.snake, GRID);
     state.score = 0;
-    state.speed = BASE_SPEED;
+    state.speed = BASE_SPEED * speedMult;
     state.lastTick = 0;
     state.frame = 0;
     state.eatFlash = 0;
@@ -369,6 +417,10 @@ export default function SnakeGame() {
     if (dir !== OPP[last] && q.length < QUEUE_MAX) q.push(dir);
   };
 
+  const toggleGridSize = () => {
+    setGridSize(prev => (prev === 'S' ? 'L' : 'S'));
+  };
+
   // ── Render ────────────────────────────────────────────────────────────────
 
   const isNewBest = score > 0 && score >= pb;
@@ -392,11 +444,28 @@ export default function SnakeGame() {
             borderBottom: 'none',
           }}
         >
-          <div className="font-urbanist text-sm">
+          <div className="font-urbanist text-sm flex-1 min-w-0">
             <span style={{ color: '#7c3aed' }}>Score </span>
             <span className="font-bold tabular-nums" style={{ color: '#f472b6' }}>{score}</span>
           </div>
-          <div className="font-urbanist text-sm text-right">
+          {showGridToggle && (
+            <button
+              type="button"
+              onClick={toggleGridSize}
+              className="font-urbanist text-xs font-medium px-2 py-1 rounded transition-all select-none shrink-0 hover:brightness-125"
+              style={{
+                color: '#f472b6',
+                background: 'rgba(124, 58, 237, 0.2)',
+                border: '1px solid rgba(244, 114, 182, 0.3)',
+              }}
+              aria-label={`Grid size: ${gridSize === 'S' ? 'Small' : 'Large'}. Click to toggle.`}
+            >
+              <span style={{ opacity: gridSize === 'S' ? 1 : 0.5 }}>S</span>
+              <span className="mx-1" style={{ color: '#a78bfa', opacity: 0.6 }}>|</span>
+              <span style={{ opacity: gridSize === 'L' ? 1 : 0.5 }}>L</span>
+            </button>
+          )}
+          <div className="font-urbanist text-sm text-right flex-1 min-w-0">
             <span style={{ color: '#7c3aed' }}>Best </span>
             <span className="font-bold tabular-nums" style={{ color: '#f472b6' }}>{pb}</span>
           </div>
@@ -452,6 +521,42 @@ export default function SnakeGame() {
                 Game Over
               </p>
               <p className="font-urbanist text-sm" style={{ color: '#a78bfa' }}>
+                Score: <span className="font-bold" style={{ color: '#f472b6' }}>{score}</span>
+              </p>
+              {isNewBest && (
+                <p className="font-urbanist text-xs" style={{ color: '#d946ef' }}>
+                  ✦ New Personal Best!
+                </p>
+              )}
+              <div className={isNewBest ? 'mt-2' : 'mt-3'}>
+                <Button 
+                  variant="secondary"
+                  size="lg"
+                  className="h-[40px] bg-[#7c3aed] hover:bg-[#7c3aed]/90"
+                  onClick={startGame}
+                >
+                  Play Again
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Win overlay — snake filled the grid */}
+          {uiState === 'won' && (
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+              style={{ background: 'rgba(6, 0, 14, 0.90)', backdropFilter: 'blur(5px)' }}
+            >
+              <p
+                className="font-audiowide text-lg mb-1 text-center"
+                style={{ color: '#f472b6', textShadow: '0 0 20px rgba(244,114,182,0.45)' }}
+              >
+                Well Done!
+              </p>
+              <p className="font-urbanist text-sm text-center" style={{ color: '#a78bfa' }}>
+                You beat the game
+              </p>
+              <p className="font-urbanist text-sm text-center" style={{ color: '#a78bfa' }}>
                 Score: <span className="font-bold" style={{ color: '#f472b6' }}>{score}</span>
               </p>
               {isNewBest && (
