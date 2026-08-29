@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { dispatchCursorGamePlaying } from '@/components/CustomCursor';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
@@ -335,6 +336,7 @@ function findSafeMove(
 // ── Component ──────────────────────────────────────────────────────────────
 
 export default function SnakeGame() {
+  const { t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef    = useRef(0);
   const dprRef    = useRef(1);
@@ -917,7 +919,7 @@ export default function SnakeGame() {
       style={{ background: 'linear-gradient(180deg, #020202 0%,rgb(8, 0, 21) 50%, #020202 100%)' }}
     >
       <h2 className="font-audiowide text-xl lg:text-2xl text-white mb-6 text-center">
-        Play some snake before you leave
+        {t.snakeGame.title}
       </h2>
 
       <div className="flex flex-col" style={{ width: SIZE }}>
