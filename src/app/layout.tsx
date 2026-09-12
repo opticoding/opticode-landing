@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Audiowide, Urbanist } from 'next/font/google';
-import CustomCursor from '@/components/CustomCursor';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import './globals.css';
 
@@ -128,9 +127,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1.0,
-  maximumScale: 1.0,
-  minimumScale: 1.0,
-  userScalable: false,
 };
 
 const jsonLd = {
@@ -215,7 +211,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <LanguageProvider>
-          <CustomCursor />
           {children}
         </LanguageProvider>
       </body>
