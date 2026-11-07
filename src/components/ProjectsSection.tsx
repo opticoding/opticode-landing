@@ -133,7 +133,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id={SectionId.PROJECTS} className={styles.section} aria-labelledby="projects-heading">
+    <section id={SectionId.PROJECTS} className={styles.section} aria-labelledby="projects-heading" style={{ background: 'linear-gradient(180deg, #020202 0%,rgb(6, 0, 15) 25%,rgb(8, 0, 21) 50%,rgb(6, 0, 15) 75%, #020202 100%)' }}>
       <div className={styles.container}>
         <div ref={introRef} className={styles.introReveal} data-visible={isIntroVisible}>
           <header className={styles.sectionHeader}>

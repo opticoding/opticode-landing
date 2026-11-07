@@ -916,9 +916,9 @@ export default function SnakeGame() {
   return (
     <section
       className="w-full flex flex-col items-center pb-16 lg:pb-24 px-4"
-      style={{ background: 'linear-gradient(180deg, #020202 0%,rgb(8, 0, 21) 50%, #020202 100%)' }}
+      style={{ background: '#020202' }}
     >
-      <h2 className="font-audiowide text-xl lg:text-2xl text-white mb-6 text-center">
+      <h2 className="font-audiowide text-xl lg:text-2xl text-white mt-20 mb-6 text-center">
         {t.snakeGame.title}
       </h2>
 
