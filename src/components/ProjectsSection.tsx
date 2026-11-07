@@ -11,6 +11,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { SectionId } from '@/constants/constants';
 import { projects, screenshotSrc, type Project } from '@/constants/projects';
+import { preloadProjectImages } from '@/lib/preloadProjectImages';
 import styles from './ProjectsSection.module.css';
 
 function ProjectPreview({ project }: { project: Project }) {
@@ -122,6 +123,13 @@ export default function ProjectsSection() {
   const project = projects[activeIndex];
   const details = copy.items[project.id];
 
+  useEffect(() => {
+    if (!isIntroVisible) return;
+    // Let the current preview render first and skip slides passed quickly.
+    const timeout = window.setTimeout(() => preloadProjectImages(project, true), 250);
+    return () => window.clearTimeout(timeout);
+  }, [isIntroVisible, project]);
+
   const selectProject = (index: number) => {
     setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
@@ -230,6 +238,9 @@ export default function ProjectsSection() {
                   variant="outline"
                   size="lg"
                   className={styles.showMore}
+                  onPointerEnter={() => preloadProjectImages(project)}
+                  onFocus={() => preloadProjectImages(project)}
+                  onPointerDown={() => preloadProjectImages(project)}
                   onClick={() => setGalleryProject(project)}
                   aria-haspopup="dialog"
                 >

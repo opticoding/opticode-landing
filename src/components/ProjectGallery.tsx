@@ -1,15 +1,53 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CloseIcon, ExternalLinkIcon } from '@/components/icons';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { screenshotSrc, type Project } from '@/constants/projects';
+import { screenshotSrc, type Project, type ProjectScreenshot } from '@/constants/projects';
 import styles from './ProjectsSection.module.css';
 
 interface ProjectGalleryProps {
   project: Project;
   onClose: () => void;
+}
+
+function GalleryImage({ src, alt, shot, first }: {
+  src: string;
+  alt: string;
+  shot: ProjectScreenshot;
+  first: boolean;
+}) {
+  const { t } = useLanguage();
+  const [state, setState] = useState<'loading' | 'loaded' | 'error'>('loading');
+
+  return (
+    <div
+      className={styles.galleryImageFrame}
+      style={{ aspectRatio: `${shot.width} / ${shot.height}` }}
+      data-state={state}
+      aria-busy={state === 'loading'}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element -- static WebP files are optimized before deployment */}
+      <img
+        src={src}
+        alt={alt}
+        width={shot.width}
+        height={shot.height}
+        className={styles.galleryImage}
+        loading={first ? 'eager' : 'lazy'}
+        fetchPriority={first ? 'high' : 'auto'}
+        decoding="async"
+        onLoad={() => setState('loaded')}
+        onError={() => setState('error')}
+      />
+      {state !== 'loaded' && (
+        <span className={styles.galleryImageStatus}>
+          {state === 'error' ? t.projects.imageUnavailable : t.projects.loadingImage}
+        </span>
+      )}
+    </div>
+  );
 }
 
 export default function ProjectGallery({ project, onClose }: ProjectGalleryProps) {
@@ -100,18 +138,16 @@ export default function ProjectGallery({ project, onClose }: ProjectGalleryProps
         </button>
       </header>
       <div className={styles.galleryImages}>
-        {project.screenshots.map((filename, index) => {
+        {project.screenshots.map((shot, index) => {
           const shotTitle = copy.items[project.id].screenshots[index];
           const shotUrl = project.screenshotUrls?.[index];
           return (
-            <figure className={styles.galleryFigure} key={filename}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- the file's own ratio sets the height */}
-              <img
-                src={screenshotSrc(project.id, filename)}
+            <figure className={styles.galleryFigure} key={shot.filename}>
+              <GalleryImage
+                src={screenshotSrc(project.id, shot)}
                 alt={`${title} — ${shotTitle}`}
-                className={styles.galleryImage}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding="async"
+                shot={shot}
+                first={index === 0}
               />
               <figcaption>
                 <div className={styles.shotCaption}>

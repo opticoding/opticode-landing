@@ -87,6 +87,8 @@ export const translations = {
       preview: 'project preview',
       scrollGallery: 'Scroll to explore',
       closeGallery: 'Close gallery',
+      loadingImage: 'Loading image…',
+      imageUnavailable: 'Couldn’t load this image.',
       items: {
         grq: {
           title: 'Hollywood App',
@@ -222,6 +224,8 @@ export const translations = {
       preview: 'förhandsvisning av projektet',
       scrollGallery: 'Scrolla för att se mer',
       closeGallery: 'Stäng bildgalleriet',
+      loadingImage: 'Laddar bilden…',
+      imageUnavailable: 'Bilden kunde inte laddas.',
       items: {
         grq: {
           title: 'Hollywood App',

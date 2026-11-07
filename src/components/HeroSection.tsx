@@ -28,6 +28,8 @@ export default function HeroSection() {
           alt="Hero Background" 
           fill
           className="object-cover"
+          priority
+          fetchPriority="high"
           unoptimized
         />
       </div>
