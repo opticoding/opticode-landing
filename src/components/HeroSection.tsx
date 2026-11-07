@@ -21,11 +21,10 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full overflow-hidden lg:min-h-0">
-      {/* Background Image - Full Width */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/hero_bg.webp" 
-          alt="Hero Background" 
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <Image
+          src="/hero_bg.svg"
+          alt="Hero Background"
           fill
           className="object-cover"
           priority
