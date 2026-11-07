@@ -54,6 +54,12 @@ export default function Navbar() {
           >
             <AnimatedText>{t.navbar.about}</AnimatedText>
           </button>
+          <button
+            onClick={() => scrollToSection(SectionId.PROJECTS)}
+            className="cursor-interactive font-urbanist font-semibold text-xl leading-7 text-white flex items-center text-center hover:text-secondary transition-colors duration-200"
+          >
+            <AnimatedText>{t.navbar.projects}</AnimatedText>
+          </button>
         </div>
 
         {/* Right side: language toggle + contact + hamburger */}
@@ -127,6 +133,13 @@ export default function Navbar() {
             className="cursor-interactive font-urbanist font-semibold text-lg text-white/90 hover:text-white hover:bg-white/5 rounded-xl px-4 py-3 text-left transition-colors duration-200"
           >
             {t.navbar.about}
+          </button>
+          <button
+            onClick={() => scrollToSection(SectionId.PROJECTS)}
+            tabIndex={isMobileMenuOpen ? 0 : -1}
+            className="cursor-interactive font-urbanist font-semibold text-lg text-white/90 hover:text-white hover:bg-white/5 rounded-xl px-4 py-3 text-left transition-colors duration-200"
+          >
+            {t.navbar.projects}
           </button>
           <div className="h-px bg-white/10 my-1" />
           <button

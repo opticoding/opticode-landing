@@ -27,7 +27,7 @@ export default function CTASection() {
       id={SectionId.CONTACT}
       className="w-full flex flex-col justify-center items-center py-24 lg:pt-[150px] lg:pb-[150px] px-8 lg:px-0 gap-16 lg:gap-[100px]"
       style={{
-        background: 'linear-gradient(183.47deg, #2B0B32 2.94%, #020202 97.22%)',
+        background: 'radial-gradient(ellipse at 15% 30%, rgba(88, 22, 105, 0.32), transparent 65%), radial-gradient(ellipse at 85% 65%, rgba(16, 74, 120, 0.3), transparent 65%), linear-gradient(180deg, #0c0915 0%, #080b16 65%, #020202 100%)',
       }}
     >
       {/* Content */}
