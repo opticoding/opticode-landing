@@ -26,7 +26,7 @@ export const projects: Project[] = [
     preview: '/demos/grq/preview.webp',
     screenshots: ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp', '07.webp'],
     tech: [
-      { group: 'frontend', tools: ['Next.js', 'TypeScript', 'Tailwind CSS', 'WebGL'] },
+      { group: 'frontend', tools: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Three.js'] },
       { group: 'backend', tools: ['Node.js', 'PostgreSQL'] },
       { group: 'contracts', tools: ['Solidity'] },
       { group: 'hosting', tools: ['Google Cloud', 'Terraform'] },
