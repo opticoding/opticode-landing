@@ -1,0 +1,14 @@
+{
+  "name": "opticode-landing",
+  // 4.129's workerd accepts dates through 2026-09-10.
+  "compatibility_date": "2026-09-06",
+  // Account subdomain is d84: https://opticode-landing.d84.workers.dev
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "opticode.se", "custom_domain": true }],
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
