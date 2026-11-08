@@ -91,12 +91,12 @@ export const translations = {
       imageUnavailable: 'Couldn’t load this image.',
       items: {
         grq: {
-          title: 'Hollywood App',
+          title: 'Treasure Hunt',
           customer: 'Film producer Steven Bernstein',
           type: 'Web application',
           description: [
-            'A promotional web app for the independent film, GRQ. It brought together a trailer, interactive 3D environments, an NFT minting platform, and paid access to the film.',
-            'At its heart was a treasure hunt spanning Web3 (blockchain) and encrypted clues stored securely. Players could win prizes and explore digital merchandise in 3D.',
+            'A promotional web app for the independent Hollywood film, GRQ The Movie. It brought together a trailer, interactive 3D environments, an NFT minting platform, and paid access to the film.',
+            'At its heart was a treasure hunt spanning Web3 (blockchain) and encrypted clues. Players could win prizes and explore digital merchandise such as a puzzle game and vinyl music player.',
           ],
           screenshots: ['Landing page with trailer', 'About the movie', 'Game prizes and interview', 'Game content', 'NFT clues and 3D scratch tickets', 'Treasure hunt submission', 'Interactive puzzle game'],
         },
@@ -228,12 +228,12 @@ export const translations = {
       imageUnavailable: 'Bilden kunde inte laddas.',
       items: {
         grq: {
-          title: 'Hollywood App',
-          customer: 'Filmproducent Steven Bernstein',
+          title: 'Filmprojekt',
+          customer: 'Producent Steven Bernstein',
           type: 'Webbapplikation',
           description: [
-            'En webbapp för att marknadsföra indiefilmen GRQ. Här samlades trailern, interaktiva 3D-miljöer, en plattform för att skapa NFT:er och möjligheten att se filmen mot betalning.',
-            'Kärnan var en skattjakt som sträckte sig över både Web3 (blockkedja) och krypterade ledtrådar. Spelarna kunde vinna priser och utforska digitala filmprylar i 3D.',
+            'En webbapp för att marknadsföra Hollywoodfilmen GRQ The Movie. Här samlades trailern, interaktiva 3D-miljöer, en plattform för att skapa NFT:er och möjligheten att se filmen mot betalning.',
+            'Kärnan var en skattjakt som sträckte sig över både Web3 (blockkedja) och krypterade ledtrådar. Spelarna kunde vinna priser och utforska digitala filmprylar som ett pusselspel och musikspelare.',
           ],
           screenshots: ['Landningssida med trailer', 'Om filmen', 'Spelpriser och intervju', 'Spelinnehåll', 'NFT-ledtrådar och 3D-lotter', 'Svar på skattjakt', 'Interaktivt pusselspel'],
         },
