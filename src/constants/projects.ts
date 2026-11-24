@@ -1,4 +1,4 @@
-export type ProjectId = 'grq' | 'stepcrafter' | 'more';
+export type ProjectId = 'film' | 'stepcrafter' | 'more';
 export type TechGroup = 'frontend' | 'backend' | 'contracts' | 'hosting' | 'watch';
 
 export interface ProjectScreenshot {
@@ -26,10 +26,10 @@ export function screenshotSrc(id: ProjectId, screenshot: ProjectScreenshot) {
 
 export const projects: Project[] = [
   {
-    id: 'grq',
+    id: 'film',
     active: false,
     customerUrl: 'https://www.imdb.com/name/nm0077149/',
-    preview: '/demos/grq/preview.webp',
+    preview: '/demos/film/preview.webp',
     screenshots: [
       { filename: '01.webp', width: 995, height: 907 },
       { filename: '02.webp', width: 995, height: 907 },
